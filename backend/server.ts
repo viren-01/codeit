@@ -4,8 +4,8 @@ import { Server } from 'socket.io';
 
 
 const server = createServer(app);
-const io = new Server(server, { cors: { origin: 'http://localhost:3000', methods: ['GET', "POST"] } })
-const PORT = 8008;
+const io = new Server(server, { cors: { origin: process.env.CLIENT_URL, methods: ['GET', "POST"] } })
+const PORT = process.env.PORT || 8008;
 
 
 server.listen(PORT, () => {
