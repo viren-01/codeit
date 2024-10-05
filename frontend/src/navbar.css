@@ -1,0 +1,46 @@
+.navbar {
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: flex-start; /* Align items to the top */
+    height: auto; /* Set the height of the navbar */
+}
+.icon-logo { 
+    width: 40px; /* Set the width of the icons */
+    height: 40px; /* Maintain aspect ratio */
+}
+
+.icon-list {
+    list-style-type: none; /* Remove default list styles */
+}
+
+.icon-list li {
+    margin-top: 50px; /* Add top margin to all list items except the first one */
+}
+
+.logo {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    max-height: 50px;
+    max-width: 50px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column; /* Display items vertically */
+    align-items: center; /* Horizontally center the items */
+    position: relative;
+    bottom: 140px; /* Move the list div up within the navbar */
+    left: -20px
+}
+
+.active {
+    margin-top: 10px;
+    border-bottom: 3px solid darkmagenta;
+}
+
+.icon-list li :hover {
+    cursor: pointer;
+    text-decoration: underline; /* Add underline on hover */
+    color: purple; /* Change color to purple on hover */
+}

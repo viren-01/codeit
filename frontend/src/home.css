@@ -1,0 +1,43 @@
+.home {
+    display: flex;
+    height: 100vh;
+    /* Full height of the viewport */
+}
+
+.one {
+    flex: 0.5;
+    /* Equal width for all three sections */
+    border-right: 0.5px solid gray;
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center children vertically */
+}
+
+.two {
+    flex: 3;
+    /* Equal width for all three sections */
+    border-right: 0.5px solid gray;
+}
+
+.three {
+    flex: 1;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    max-width: 500px;
+}
+
+.three > div {
+    position: relative;
+    top: 30%;
+}
+
+.equal-width-buttons {
+    width: calc(100% - 20px); /* Calculate the width based on the width of div three minus margin */
+    color: white; /* Set text color to white */
+    border: none; /* Remove default button border */
+    border-radius: 5px; /* Add border radius */
+    padding: 10px; /* Add padding for better appearance */
+    margin-bottom: 50px;
+    background-color: darkmagenta;
+    height: 45px
+}
