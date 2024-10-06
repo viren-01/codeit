@@ -10,17 +10,19 @@ import { useDispatch } from 'react-redux';
 import { setTerminalVisibility } from '../store/slices';
 import Common from '../service/Common';
 import { BASE_URL } from '../config/constant';
+import ReactSelect from '../components/ReactSelect';
 
 const socket = io(BASE_URL + "/")
 
 function Home() {
-    const [text, setText] = useState<string>('')
+    const [text, setText] = useState<string>('//write your code here...')
     const [showInvitePopup, setShowInvitePopup] = useState<boolean>(false)
     const [showConnectModal, setShowConnectModal] = useState<boolean>(false)
     const [connectionRequest, setConnectionRequest] = useState<{ parent: string | undefined, child: string }>({ parent: '', child: '' })
     const isConnected = useRef<boolean>(false)
     const dispatch: any = useDispatch()
     const [response, setResponse] = useState<any>("")
+    const [codeLanguageOptions, setCodeLanguageOptions] = useState<any>([{ label: 'NodeJS', value: 'NodeJS' }]) // eslint-disable-line
 
     useEffect(() => {
         let connDetails: any = null
@@ -65,7 +67,7 @@ function Home() {
 
         socket.on('ex-response', (data: any) => {
             let { socket_id } = data
-            if(socket.id === socket_id) {
+            if (socket.id === socket_id) {
                 setResponse(data?.data?.data)
             }
         })
@@ -133,13 +135,16 @@ function Home() {
                     <Navbar />
                 </div>
                 <div className='two'>
-                    <Editor text={text} handleTextChange={handleTextChange} output={response}/>
+                    <Editor text={text} handleTextChange={handleTextChange} output={response} />
                 </div>
                 <div className='three'>
-                    <div>
+                    <div className='dropdown'>
+                        <ReactSelect options={codeLanguageOptions} value={codeLanguageOptions[0]} onChange={() => { }} />
+                    </div>
+                    <div className='btn-1'>
                         <button className="equal-width-buttons" onClick={handleInviteClick}>Invite</button>
                     </div>
-                    <div>
+                    <div className='btn-2'>
                         <button className="equal-width-buttons" onClick={handleExecute}>Execute</button>
                     </div>
                 </div>

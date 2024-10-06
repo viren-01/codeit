@@ -4,7 +4,7 @@ export const Index = createSlice({
     name: 'index',
     initialState: {
         connection: false,
-        terminalVisibilty: false
+        terminalVisibilty: true
     },
     reducers: {
         updateConnection: (state: any, action) => {

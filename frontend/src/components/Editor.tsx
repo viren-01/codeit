@@ -4,17 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setTerminalVisibility } from '../store/slices';
 
 export default function Editor(props: any) {
-    const [codeText, setCodeText] = useState("//write your code here...\n")
-    const [showTerminal, setShowTerminal] = useState<boolean>(false)
+    const [codeText, setCodeText] = useState("")
+    const [showTerminal, setShowTerminal] = useState<boolean>(true)
     const mainState: any = useSelector((state: any) => state.index)
     const dispatch: any = useDispatch()
 
     useEffect(() => {
-        if (props.text) {
-            setCodeText(props.text)
-        } else {
-            setCodeText("//write your code here...\n")
-        }
+        setCodeText(props.text)
     }, [props.text])
 
     useEffect(() => {
@@ -45,7 +41,7 @@ export default function Editor(props: any) {
                             props?.output?.split('\n').map((line: any, index: number) => {
                                 return (
                                     <>
-                                    <span key={line?.[0] + "_" + index} className='terminal-content'>{line}</span><br></br>
+                                        <span key={line?.[0] + "_" + index} className='terminal-content'>{line}</span><br></br>
                                     </>
                                 )
                             })
